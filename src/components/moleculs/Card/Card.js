@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import Heading from 'components/atoms/Heading/Heading';
 import Button from 'components/atoms/Button/Button';
+import linkIcon from 'assets/icons/link.svg';
 
 const StyledWrapper = styled.div`
   margin-top: 50px;
@@ -16,8 +17,13 @@ const StyledWrapper = styled.div`
 `;
 
 const InnerWrapper = styled.div`
+  position: relative;
   padding: 17px 30px;
   background-color: ${({ activeColor, theme }) => (activeColor ? theme[activeColor] : 'white')};
+
+  &:first-child {
+    z-index: 9999;
+  }
 
   ${props =>
     props.flex &&
@@ -38,11 +44,35 @@ const StyledHeading = styled(Heading)`
   margin: 5px 0 0 0;
 `;
 
+const StyledAvatar = styled.img`
+  width: 86px;
+  height: 86px;
+  position: absolute;
+  border: 5px solid ${({ theme }) => theme.twitter};
+  border-radius: 50px;
+  top: 25px;
+  right: 25px;
+`;
+
+const StyledLink = styled.a`
+  display: block;
+  width: 47px;
+  height: 47px;
+  position: absolute;
+  top: 50%;
+  right: 25px;
+  transform: translate(0, -50%);
+  background: white url(${linkIcon}) no-repeat center center / 18px;
+  border-radius: 50px;
+`;
+
 const Card = ({ cardType }) => (
   <StyledWrapper>
     <InnerWrapper activeColor={cardType}>
       <StyledHeading>Lorem ipsum</StyledHeading>
       <DateInfo>3 days</DateInfo>
+      {cardType === 'twitter' && <StyledAvatar src="https://avatars.io/twitter/hello_roman" />}
+      {cardType === 'article' && <StyledLink href="www.google.pl" alt="article-link" />}
     </InnerWrapper>
     <InnerWrapper flex>
       <Paragraph>
