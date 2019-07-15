@@ -7,7 +7,6 @@ import Button from 'components/atoms/Button/Button';
 import linkIcon from 'assets/icons/link.svg';
 
 const StyledWrapper = styled.div`
-  margin-top: 50px;
   box-shadow: 0 10px 30px -10px hsla(0, 0%, 0%, 0.1);
   overflow: hidden;
   border-radius: 10px;
