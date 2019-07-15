@@ -18,7 +18,7 @@ const YellowBackground = styled.div`
   background-color: ${({ theme }) => theme.note};
 `;
 
-storiesOf('ButtonIcon', module)
+storiesOf('Atoms/ButtonIcon', module)
   .add('NormalBulb', () => (
     <YellowBackground>
       <ButtonIcon icon={bulbIcon} />

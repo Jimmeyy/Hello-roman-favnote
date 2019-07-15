@@ -15,8 +15,10 @@ const GlobalStyle = createGlobalStyle`
   }
   
   body {
+    padding-left: 130px;
     font-size: 1.6rem;
     font-family: "Montserrat", sans-serif;
+    margin: 0;
   }
 `;
 
