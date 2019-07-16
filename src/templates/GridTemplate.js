@@ -22,6 +22,10 @@ const StyledPageHeader = styled.div`
 
 const StyledHeading = styled(Heading)`
   margin: 15px 0 0 0;
+
+  &::first-letter {
+    text-transform: uppercase;
+  }
 `;
 
 const StyledParagraph = styled(Paragraph)`
@@ -46,7 +50,7 @@ const GridTemplate = ({ children, pageType }) => (
 );
 
 GridTemplate.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.arrayOf(PropTypes.object).isRequired,
   pageType: PropTypes.oneOf(['note', 'twitter', 'article']),
 };
 
