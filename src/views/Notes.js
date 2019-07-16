@@ -1,16 +1,18 @@
 import React from 'react';
-import UserPageTemplate from 'templates/UserPageTemplate';
+import GridTemplate from 'templates/GridTemplate';
 import Card from 'components/moleculs/Card/Card';
 
 const Notes = () => (
-  <UserPageTemplate>
-    <Card cardType="note" />
-    <Card cardType="note" />
-    <Card cardType="note" />
-    <Card cardType="note" />
-    <Card cardType="note" />
-    <Card cardType="note" />
-  </UserPageTemplate>
+  <GridTemplate>
+    <>
+      <Card cardType="note" />
+      <Card cardType="note" />
+      <Card cardType="note" />
+      <Card cardType="note" />
+      <Card cardType="note" />
+      <Card cardType="note" />
+    </>
+  </GridTemplate>
 );
 
 export default Notes;

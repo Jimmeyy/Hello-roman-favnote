@@ -1,10 +1,18 @@
 import React from 'react';
-import UserPageTemplate from 'templates/UserPageTemplate';
+import GridTemplate from 'templates/GridTemplate';
+import Card from 'components/moleculs/Card/Card';
 
 const Articles = () => (
-  <UserPageTemplate pageType="article">
-    <h1>Articles view</h1>
-  </UserPageTemplate>
+  <GridTemplate pageType="article">
+    <>
+      <Card cardType="article" />
+      <Card cardType="article" />
+      <Card cardType="article" />
+      <Card cardType="article" />
+      <Card cardType="article" />
+      <Card cardType="article" />
+    </>
+  </GridTemplate>
 );
 
 export default Articles;

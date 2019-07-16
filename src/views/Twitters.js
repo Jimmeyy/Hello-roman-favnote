@@ -1,10 +1,18 @@
 import React from 'react';
-import UserPageTemplate from 'templates/UserPageTemplate';
+import GridTemplate from 'templates/GridTemplate';
+import Card from 'components/moleculs/Card/Card';
 
 const Twitters = () => (
-  <UserPageTemplate pageType="twitter">
-    <h1>Twitters view</h1>
-  </UserPageTemplate>
+  <GridTemplate pageType="twitter">
+    <>
+      <Card cardType="twitter" />
+      <Card cardType="twitter" />
+      <Card cardType="twitter" />
+      <Card cardType="twitter" />
+      <Card cardType="twitter" />
+      <Card cardType="twitter" />
+    </>
+  </GridTemplate>
 );
 
 export default Twitters;

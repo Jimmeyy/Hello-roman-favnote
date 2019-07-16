@@ -40,7 +40,7 @@ const Sidebar = ({ pageType }) => (
   <StyledSidebar activeColor={pageType}>
     <StyledLogo>Logo</StyledLogo>
     <div>
-      <ButtonIcon exact as={NavLink} to="/" icon={penIcon} />
+      <ButtonIcon exact as={NavLink} to="/notes" icon={penIcon} />
       <ButtonIcon as={NavLink} to="/twitters" icon={twitterIcon} />
       <ButtonIcon as={NavLink} to="/articles" icon={bulbIcon} />
     </div>
