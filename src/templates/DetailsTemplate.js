@@ -74,7 +74,7 @@ const DetailsTemplate = ({ pageType, title, created, content, articleUrl, twitte
       {pageType === 'twitter' && (
         <StyledImage alt={title} src={`https://avatars.io/twitter/${twitterName}`} />
       )}
-      <StyledButtonLink as={Link} to={`/${pageType}`} activeColor={pageType}>
+      <StyledButtonLink as={Link} to={`/${pageType}s`}>
         save / close
       </StyledButtonLink>
     </StyledWrapper>
