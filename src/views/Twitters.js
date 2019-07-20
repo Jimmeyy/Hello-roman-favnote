@@ -5,6 +5,7 @@ import Card from 'components/moleculs/Card/Card';
 // temp
 const twitters = [
   {
+    id: 1,
     title: 'Hello Roman',
     content:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
@@ -12,6 +13,7 @@ const twitters = [
     twitterName: 'hello_roman',
   },
   {
+    id: 2,
     title: 'Redux guy',
     content:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
@@ -19,6 +21,7 @@ const twitters = [
     twitterName: 'dan_abramov',
   },
   {
+    id: 3,
     title: 'React router stuff',
     content:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
@@ -26,6 +29,7 @@ const twitters = [
     twitterName: 'mjackson',
   },
   {
+    id: 4,
     title: 'Super animacje!',
     content:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
@@ -38,7 +42,8 @@ const Twitters = () => (
   <GridTemplate pageType="twitter">
     {twitters.map(twitter => (
       <Card
-        key={twitter.title}
+        id={twitter.id}
+        key={twitter.id}
         cardType="twitter"
         title={twitter.title}
         content={twitter.content}
