@@ -2,12 +2,35 @@ const initialState = {
   twitters: [
     {
       id: 1,
-      title: 'Wake me up when Vue ends',
+      title: 'Hello Roman',
       content:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
-      twitterName: 'hello_roman',
-      articleUrl: 'https://youtube.com/helloroman',
       created: '1 day',
+      twitterName: 'hello_roman',
+    },
+    {
+      id: 2,
+      title: 'Redux guy',
+      content:
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
+      created: '1 day',
+      twitterName: 'dan_abramov',
+    },
+    {
+      id: 3,
+      title: 'React router stuff',
+      content:
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
+      created: '5 days',
+      twitterName: 'mjackson',
+    },
+    {
+      id: 4,
+      title: 'Super animacje!',
+      content:
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
+      created: '10 days',
+      twitterName: 'sarah_edo',
     },
   ],
   notes: [
@@ -36,7 +59,7 @@ const initialState = {
 
 // eslint-disable-next-line no-unused-vars
 const rootReducer = (state = initialState, action) => {
-  console.log(action);
+  return state;
 };
 
 export default rootReducer;
