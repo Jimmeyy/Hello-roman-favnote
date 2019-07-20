@@ -10,12 +10,13 @@ class DetailsPage extends Component {
 
   componentDidMount() {
     const { match } = this.props;
+
     switch (match.path) {
-      case routes.note:
-        this.setState({ pageType: 'note' });
-        break;
       case routes.twitter:
         this.setState({ pageType: 'twitter' });
+        break;
+      case routes.note:
+        this.setState({ pageType: 'note' });
         break;
       case routes.article:
         this.setState({ pageType: 'article' });
@@ -26,18 +27,33 @@ class DetailsPage extends Component {
   }
 
   render() {
+    const dummyArticle = {
+      id: 1,
+      title: 'Wake me up when Vue ends',
+      content:
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
+      twitterName: 'hello_roman',
+      articleUrl: 'https://youtube.com/helloroman',
+      created: '1 day',
+    };
+
     const { pageType } = this.state;
 
     return (
-      <DetailsTemplate pageType={pageType}>
-        <h1>{pageType}</h1>
-      </DetailsTemplate>
+      <DetailsTemplate
+        pageType={pageType}
+        title={dummyArticle.title}
+        created={dummyArticle.created}
+        content={dummyArticle.content}
+        articleUrl={dummyArticle.articleUrl}
+        twitterName={dummyArticle.twitterName}
+      />
     );
   }
 }
 
 DetailsPage.propTypes = {
-  match: PropTypes.objectOf(PropTypes.any).isRequired,
+  match: PropTypes.string.isRequired,
 };
 
 export default DetailsPage;
