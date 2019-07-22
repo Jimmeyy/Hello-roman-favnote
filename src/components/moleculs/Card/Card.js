@@ -50,7 +50,7 @@ const StyledAvatar = styled.img`
   width: 86px;
   height: 86px;
   position: absolute;
-  border: 5px solid ${({ theme }) => theme.twitter};
+  border: 5px solid ${({ theme }) => theme.twitters};
   border-radius: 50px;
   top: 25px;
   right: 25px;
@@ -89,7 +89,7 @@ class Card extends React.Component {
     const { redirect } = this.state;
 
     if (redirect) {
-      return <Redirect to={`${cardType}s/${id}`} />;
+      return <Redirect to={`${cardType}/${id}`} />;
     }
 
     return (
@@ -97,10 +97,10 @@ class Card extends React.Component {
         <InnerWrapper activeColor={cardType}>
           <StyledHeading>{title}</StyledHeading>
           <DateInfo>{created}</DateInfo>
-          {cardType === 'twitter' && (
+          {cardType === 'twitters' && (
             <StyledAvatar src={`https://avatars.io/twitter/${twitterName}`} />
           )}
-          {cardType === 'article' && <StyledLink href={articleUrl} alt="article-link" />}
+          {cardType === 'articles' && <StyledLink href={articleUrl} alt="article-link" />}
         </InnerWrapper>
         <InnerWrapper flex>
           <Paragraph>{content}</Paragraph>
@@ -115,7 +115,7 @@ class Card extends React.Component {
 
 Card.propTypes = {
   id: PropTypes.number.isRequired,
-  cardType: PropTypes.oneOf(['note', 'twitter', 'article']),
+  cardType: PropTypes.oneOf(['notes', 'twitters', 'articles']),
   title: PropTypes.string.isRequired,
   created: PropTypes.string.isRequired,
   twitterName: PropTypes.string,
@@ -125,7 +125,7 @@ Card.propTypes = {
 };
 
 Card.defaultProps = {
-  cardType: 'note',
+  cardType: 'notes',
   twitterName: null,
   articleUrl: null,
 };

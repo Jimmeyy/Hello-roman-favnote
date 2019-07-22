@@ -40,7 +40,7 @@ const Notes = () => (
       <Card
         id={note.id}
         key={note.id}
-        cardType="note"
+        cardType="notes"
         title={note.title}
         content={note.content}
         created={note.created}

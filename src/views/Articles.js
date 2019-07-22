@@ -43,7 +43,7 @@ const renderArticles = () => {
     <Card
       id={article.id}
       key={article.id}
-      cardType="article"
+      cardType="articles"
       title={article.title}
       content={article.content}
       created={article.created}
@@ -53,6 +53,6 @@ const renderArticles = () => {
   return arr;
 };
 
-const Articles = () => <GridTemplate pageType="article">{renderArticles()}</GridTemplate>;
+const Articles = () => <GridTemplate pageType="articles">{renderArticles()}</GridTemplate>;
 
 export default Articles;

@@ -5,7 +5,7 @@ import routes from 'routes/index';
 
 class DetailsPage extends Component {
   state = {
-    pageType: 'note',
+    pageType: 'notes',
   };
 
   componentDidMount() {
@@ -13,13 +13,13 @@ class DetailsPage extends Component {
 
     switch (match.path) {
       case routes.twitter:
-        this.setState({ pageType: 'twitter' });
+        this.setState({ pageType: 'twitters' });
         break;
       case routes.note:
-        this.setState({ pageType: 'note' });
+        this.setState({ pageType: 'notes' });
         break;
       case routes.article:
-        this.setState({ pageType: 'article' });
+        this.setState({ pageType: 'articles' });
         break;
       default:
         break;
