@@ -5,6 +5,7 @@ import UserPageTemplate from 'templates/UserPageTemplate';
 import Heading from 'components/atoms/Heading/Heading';
 import Input from 'components/atoms/Input/Input';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
+import withContext from 'hoc/withContext';
 
 const StyledWrapper = styled.div`
   padding: 25px 70px;
@@ -34,14 +35,14 @@ const StyledParagraph = styled(Paragraph)`
   font-style: italic;
 `;
 
-const GridTemplate = ({ children, pageType }) => (
+const GridTemplate = ({ children, pageContext }) => (
   <>
-    <UserPageTemplate pageType={pageType}>
+    <UserPageTemplate>
       <StyledWrapper>
         <StyledPageHeader>
           <Input search placeholder="Search" />
-          <StyledHeading big>{pageType}</StyledHeading>
-          <StyledParagraph>6 {pageType}</StyledParagraph>
+          <StyledHeading big>{pageContext}</StyledHeading>
+          <StyledParagraph>6 {pageContext}</StyledParagraph>
         </StyledPageHeader>
         <StyledGrid>{children}</StyledGrid>
       </StyledWrapper>
@@ -51,11 +52,11 @@ const GridTemplate = ({ children, pageType }) => (
 
 GridTemplate.propTypes = {
   children: PropTypes.arrayOf(PropTypes.object).isRequired,
-  pageType: PropTypes.oneOf(['notes', 'twitters', 'articles']),
+  pageContext: PropTypes.oneOf(['notes', 'twitters', 'articles']),
 };
 
 GridTemplate.defaultProps = {
-  pageType: 'notes',
+  pageContext: 'notes',
 };
 
-export default GridTemplate;
+export default withContext(GridTemplate);
