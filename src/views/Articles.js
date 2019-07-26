@@ -19,9 +19,7 @@ const renderArticles = articles => {
   return arr;
 };
 
-const Articles = ({ articles }) => (
-  <GridTemplate pageType="articles">{renderArticles(articles)}</GridTemplate>
-);
+const Articles = ({ articles }) => <GridTemplate>{renderArticles(articles)}</GridTemplate>;
 
 const mapStateToProps = state => {
   const { articles } = state;

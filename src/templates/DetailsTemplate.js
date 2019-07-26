@@ -6,6 +6,7 @@ import UserPageTemplate from 'templates/UserPageTemplate';
 import Heading from 'components/atoms/Heading/Heading';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import Button from 'components/atoms/Button/Button';
+import withContext from 'hoc/withContext';
 
 const StyledWrapper = styled.div`
   padding: 25px 150px 25px 70px;
@@ -60,8 +61,8 @@ const StyledButtonLink = styled(Button)`
   text-decoration: none;
 `;
 
-const DetailsTemplate = ({ pageType, title, created, content, articleUrl, twitterName }) => (
-  <UserPageTemplate pageType={pageType}>
+const DetailsTemplate = ({ title, created, content, articleUrl, twitterName, pageContext }) => (
+  <UserPageTemplate>
     <StyledWrapper>
       <StyledPageHeader>
         <StyledHeading big as="h1">
@@ -70,11 +71,11 @@ const DetailsTemplate = ({ pageType, title, created, content, articleUrl, twitte
         <StyledParagraph>{created}</StyledParagraph>
       </StyledPageHeader>
       <Paragraph>{content}</Paragraph>
-      {pageType === 'article' && <StyledLink href={articleUrl}>Open article</StyledLink>}
-      {pageType === 'twitter' && (
+      {pageContext === 'article' && <StyledLink href={articleUrl}>Open article</StyledLink>}
+      {pageContext === 'twitter' && (
         <StyledImage alt={title} src={`https://avatars.io/twitter/${twitterName}`} />
       )}
-      <StyledButtonLink as={Link} to={`/${pageType}`}>
+      <StyledButtonLink as={Link} to={`/${pageContext}`}>
         save / close
       </StyledButtonLink>
     </StyledWrapper>
@@ -82,7 +83,7 @@ const DetailsTemplate = ({ pageType, title, created, content, articleUrl, twitte
 );
 
 DetailsTemplate.propTypes = {
-  pageType: PropTypes.string.isRequired,
+  pageContext: PropTypes.string.isRequired,
   title: PropTypes.string,
   created: PropTypes.string,
   content: PropTypes.string,
@@ -98,4 +99,4 @@ DetailsTemplate.defaultProps = {
   twitterName: '',
 };
 
-export default DetailsTemplate;
+export default withContext(DetailsTemplate);

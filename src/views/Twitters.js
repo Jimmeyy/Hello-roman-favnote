@@ -8,7 +8,7 @@ const Twitters = props => {
   const { twitters } = props;
 
   return (
-    <GridTemplate pageType="twitters">
+    <GridTemplate>
       {twitters.map(twitter => (
         <Card
           id={twitter.id}
