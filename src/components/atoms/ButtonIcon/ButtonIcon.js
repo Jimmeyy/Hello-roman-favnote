@@ -8,6 +8,7 @@ const ButtonIcon = styled.button`
   background: url(${({ icon }) => icon}) no-repeat 50% 50% / 40%;
   border: none;
   transition: all 0.3s;
+  outline: none;
 
   &.active {
     background-color: white;
