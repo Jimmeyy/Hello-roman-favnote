@@ -1,21 +1,23 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import Heading from 'components/atoms/Heading/Heading';
 import Button from 'components/atoms/Button/Button';
-import linkIcon from 'assets/icons/link.svg';
+import LinkIcon from 'assets/icons/link.svg';
 import { connect } from 'react-redux';
 import { removeItem as removeItemAction } from 'actions';
+import withContext from 'hoc/withContext';
 
 const StyledWrapper = styled.div`
-  box-shadow: 0 10px 30px -10px hsla(0, 0%, 0%, 0.1);
-  overflow: hidden;
-  border-radius: 10px;
   min-height: 380px;
+  box-shadow: 0 10px 30px -10px hsla(0, 0%, 0%, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
   display: grid;
-  grid-template-rows: 0fr 1fr;
+  grid-template-rows: 0.25fr 1fr;
 `;
 
 const InnerWrapper = styled.div`
@@ -23,12 +25,12 @@ const InnerWrapper = styled.div`
   padding: 17px 30px;
   background-color: ${({ activeColor, theme }) => (activeColor ? theme[activeColor] : 'white')};
 
-  &:first-child {
+  :first-of-type {
     z-index: 9999;
   }
 
-  ${props =>
-    props.flex &&
+  ${({ flex }) =>
+    flex &&
     css`
       display: flex;
       flex-direction: column;
@@ -37,38 +39,40 @@ const InnerWrapper = styled.div`
 `;
 
 const DateInfo = styled(Paragraph)`
-  margin: 0 0 5px 0;
-  font-weight: ${props => props.theme.light};
-  font-style: italic;
+  margin: 0 0 5px;
+  font-weight: ${({ theme }) => theme.bold};
+  font-size: ${({ theme }) => theme.fontSize.xs};
 `;
 
 const StyledHeading = styled(Heading)`
-  margin: 5px 0 0 0;
+  margin: 5px 0 0;
 `;
 
 const StyledAvatar = styled.img`
   width: 86px;
   height: 86px;
-  position: absolute;
   border: 5px solid ${({ theme }) => theme.twitters};
   border-radius: 50px;
-  top: 25px;
+  position: absolute;
   right: 25px;
+  top: 25px;
 `;
 
-const StyledLink = styled.a`
+const StyledLinkButton = styled.a`
   display: block;
   width: 47px;
   height: 47px;
-  position: absolute;
-  top: 50%;
-  right: 25px;
-  transform: translate(0, -50%);
-  background: white url(${linkIcon}) no-repeat center center / 18px;
   border-radius: 50px;
+  background: white url(${LinkIcon}) no-repeat;
+  background-size: 60%;
+  background-position: 50%;
+  position: absolute;
+  right: 25px;
+  top: 50%;
+  transform: translateY(-50%);
 `;
 
-class Card extends React.Component {
+class Card extends Component {
   state = {
     redirect: false,
   };
@@ -78,7 +82,7 @@ class Card extends React.Component {
   render() {
     const {
       id,
-      cardType,
+      pageContext,
       title,
       created,
       twitterName,
@@ -89,23 +93,23 @@ class Card extends React.Component {
     const { redirect } = this.state;
 
     if (redirect) {
-      return <Redirect to={`${cardType}/${id}`} />;
+      return <Redirect to={`${pageContext}/details/${id}`} />;
     }
 
     return (
       <StyledWrapper onClick={this.handleCardClick}>
-        <InnerWrapper activeColor={cardType}>
+        <InnerWrapper activeColor={pageContext}>
           <StyledHeading>{title}</StyledHeading>
           <DateInfo>{created}</DateInfo>
-          {cardType === 'twitters' && (
+          {pageContext === 'twitters' && (
             <StyledAvatar src={`https://avatars.io/twitter/${twitterName}`} />
           )}
-          {cardType === 'articles' && <StyledLink href={articleUrl} alt="article-link" />}
+          {pageContext === 'articles' && <StyledLinkButton href={articleUrl} />}
         </InnerWrapper>
         <InnerWrapper flex>
           <Paragraph>{content}</Paragraph>
-          <Button onClick={() => removeItem(cardType, id)} secondary>
-            Remove
+          <Button onClick={() => removeItem(pageContext, id)} secondary>
+            REMOVE
           </Button>
         </InnerWrapper>
       </StyledWrapper>
@@ -115,7 +119,7 @@ class Card extends React.Component {
 
 Card.propTypes = {
   id: PropTypes.number.isRequired,
-  cardType: PropTypes.oneOf(['notes', 'twitters', 'articles']),
+  pageContext: PropTypes.oneOf(['notes', 'twitters', 'articles']),
   title: PropTypes.string.isRequired,
   created: PropTypes.string.isRequired,
   twitterName: PropTypes.string,
@@ -125,7 +129,7 @@ Card.propTypes = {
 };
 
 Card.defaultProps = {
-  cardType: 'notes',
+  pageContext: 'notes',
   twitterName: null,
   articleUrl: null,
 };
@@ -137,4 +141,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   null,
   mapDispatchToProps,
-)(Card);
+)(withContext(Card));
