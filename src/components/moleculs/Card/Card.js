@@ -18,7 +18,6 @@ const StyledWrapper = styled.div`
   position: relative;
   display: grid;
   grid-template-rows: 0.25fr 1fr;
-  border: 8px solid red;
   box-shadow: 0 0 30px #333333;
 `;
 
