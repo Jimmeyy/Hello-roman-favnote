@@ -84,7 +84,7 @@ class GridTemplate extends Component {
           <ButtonIconWrapper>
             <StyledButtonIcon icon={plusIcon} pageType={pageContext} onClick={this.toggleMenu} />
           </ButtonIconWrapper>
-          <NewItemBar isVisible={newItemBarFlag} />
+          <NewItemBar isVisible={newItemBarFlag} closeMenu={this.toggleMenu} />
         </StyledWrapper>
       </UserPageTemplate>
     );
