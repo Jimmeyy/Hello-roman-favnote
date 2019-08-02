@@ -1,3 +1,6 @@
+// eslint-disable-next-line no-unused-vars
+import { ADD_ITEM, REMOVE_ITEM, AUTH_REQUEST, AUTH_SUCCESS, AUTH_FAILURE } from 'actions';
+
 const initialState = {
   twitters: [
     {
@@ -102,12 +105,17 @@ const initialState = {
 // eslint-disable-next-line no-unused-vars
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'ADD_ITEM':
+    case AUTH_SUCCESS:
+      return {
+        ...state,
+        userID: action.payload.data._id,
+      };
+    case ADD_ITEM:
       return {
         ...state,
         [action.payload.itemType]: [...state[action.payload.itemType], action.payload.item],
       };
-    case 'REMOVE_ITEM':
+    case REMOVE_ITEM:
       return {
         ...state,
         [action.payload.itemType]: [

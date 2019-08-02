@@ -6,7 +6,7 @@ import AuthTemplate from 'templates/AuthTemplate';
 import Heading from 'components/atoms/Heading/Heading';
 import Input from 'components/atoms/Input/Input';
 import Button from 'components/atoms/Button/Button';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import routes from 'routes';
 import { connect } from 'react-redux';
 import { authenticate as authenticateAction } from 'actions';
@@ -33,7 +33,7 @@ const StyledLink = styled(Link)`
   margin: 20px 0 50px;
 `;
 
-const LoginPage = ({ authenticate }) => (
+const LoginPage = ({ authenticate, userID }) => (
   <AuthTemplate>
     <Formik
       initialValues={{ username: '', password: '' }}
@@ -43,6 +43,7 @@ const LoginPage = ({ authenticate }) => (
     >
       {({ handleChange, handleBlur, values }) => (
         <>
+          {userID && <Redirect to={routes.home} />}
           <Heading>Sign in</Heading>
           <StyledForm>
             <StyledInput
@@ -74,13 +75,22 @@ const LoginPage = ({ authenticate }) => (
 
 LoginPage.propTypes = {
   authenticate: PropTypes.func.isRequired,
+  userID: PropTypes.string,
 };
+
+LoginPage.defaultProps = {
+  userID: null,
+};
+
+const mapStateToProps = ({ userID = null }) => ({
+  userID,
+});
 
 const mapDispatchToProps = dispatch => ({
   authenticate: (username, password) => dispatch(authenticateAction(username, password)),
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps,
 )(LoginPage);
