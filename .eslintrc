@@ -17,7 +17,8 @@
         "import/no-extraneous-dependencies": 0,
         "react/jsx-filename-extension": [1, {
             "extensions": [".js"]
-        }]
+        }],
+        "no-console": "off"
     },
     "settings": {
         "import/resolver": {
