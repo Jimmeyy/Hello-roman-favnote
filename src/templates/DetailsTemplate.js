@@ -71,8 +71,8 @@ const DetailsTemplate = ({ title, created, content, articleUrl, twitterName, pag
         <StyledParagraph>{created}</StyledParagraph>
       </StyledPageHeader>
       <Paragraph>{content}</Paragraph>
-      {pageContext === 'article' && <StyledLink href={articleUrl}>Open article</StyledLink>}
-      {pageContext === 'twitter' && (
+      {pageContext === 'articles' && <StyledLink href={articleUrl}>Open article</StyledLink>}
+      {pageContext === 'twitters' && (
         <StyledImage alt={title} src={`https://avatars.io/twitter/${twitterName}`} />
       )}
       <StyledButtonLink as={Link} to={`/${pageContext}`}>
