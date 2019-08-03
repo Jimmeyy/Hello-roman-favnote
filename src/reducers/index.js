@@ -1,5 +1,7 @@
 import {
-  ADD_ITEM,
+  // ADD_ITEM_REQUEST,
+  ADD_ITEM_SUCCESS,
+  // ADD_ITEM_FAILURE,
   // REMOVE_ITEM_REQUEST,
   REMOVE_ITEM_SUCCESS,
   AUTH_SUCCESS,
@@ -30,10 +32,10 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         userID: action.payload.data._id,
       };
-    case ADD_ITEM:
+    case ADD_ITEM_SUCCESS:
       return {
         ...state,
-        [action.payload.itemType]: [...state[action.payload.itemType], action.payload.item],
+        [action.payload.itemType]: [...state[action.payload.itemType], action.payload.data],
       };
     case REMOVE_ITEM_SUCCESS:
       return {
